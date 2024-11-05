@@ -1,7 +1,6 @@
 "use client";
-import Image, {StaticImageData} from 'next/image';
 import { useCadastro } from '../context/CadastroContext';
-import fotoPerfil from "../img/perfil1.jpg"
+
 
 const Perfil = () => {
     const { cadastro } = useCadastro();

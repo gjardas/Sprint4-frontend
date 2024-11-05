@@ -53,7 +53,7 @@ const handleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
         return (
             <div>
                 <div className="flex items-center justify-center h-screen bg-[#5A85C6] text-black p-4">
-                    <form className="bg-[#7EA4DE] p-6 rounded shadow-md w-full max-w-4xl">
+                    <form onSubmit={handleSubmit} className="bg-[#7EA4DE] p-6 rounded shadow-md w-full max-w-4xl">
                         <h2 className="text-center mb-4 text-3xl">CADASTRO DO AUTOMOVEL</h2>
                         <div className="grid grid-cols-2 gap-4">
                             <div>
