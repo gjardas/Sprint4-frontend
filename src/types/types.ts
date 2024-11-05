@@ -16,3 +16,8 @@ export type TipoCarro = {
     tipo_combustivel:string;
     cambio:string;
 }
+
+export type TipoPeca = {
+    nome:string;
+    preco:number
+}

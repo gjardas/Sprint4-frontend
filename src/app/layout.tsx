@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { CadastroProvider } from "@/context/CadastroContext";
+import { CarroProvider } from '@/context/CarroContext';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,13 +27,15 @@ export default function RootLayout({
 }>) {
   return (
     <CadastroProvider>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      <CarroProvider>
+        <html lang="en">
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            {children}
+          </body>
+        </html>
+      </CarroProvider>
     </CadastroProvider>
   );
 }

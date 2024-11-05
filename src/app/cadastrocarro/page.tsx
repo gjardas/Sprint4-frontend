@@ -3,6 +3,7 @@
 import { TipoCarro } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function CadastroCarro() {
 
@@ -25,10 +26,10 @@ const handleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
 
     try{
-        const response = await fetch("ENDERECO API", {
+        const response = await fetch("http://localhost:8080/AulaRestApi_war/api/", {
             method:"POST",
             headers:{
-                "Content-Type":"application.json"
+                "Content-Type":"application/json"
             },
             body: JSON.stringify(cadastroCarro)
         });
@@ -76,9 +77,11 @@ const handleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
                                 <input type="text" name="cambio" id="idCambio" value={cadastroCarro.cambio} onChange={handleChange} className="border p-2 w-full" placeholder="Digite o tipo de seu usuário (Cliente ou Oficina)" required />
                             </div>
                         </div>
+                        <Link href={"/"}>
                         <div className="mt-6 text-center ">
                             <button type="submit" className="bg-[#1D57AE] text-white p-2 rounded hover:bg-blue-600 w-60 p-4">CADASTRAR</button>
                         </div>
+                        </Link>
                     </form>
                 </div>
             </div>

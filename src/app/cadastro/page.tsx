@@ -1,6 +1,7 @@
 "use client";
 
 import { TipoCadastro } from "@/types/types";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -33,7 +34,7 @@ export default function Cadastro() {
         e.preventDefault();
 
         try{
-            const response = await fetch("http://localhost:8080/cliente", {
+            const response = await fetch("http://localhost:8080/AulaRestApi_war/api/cliente", {
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json"
@@ -42,18 +43,7 @@ export default function Cadastro() {
             });
 
          if (response.ok) {
-            alert("Produto cadastrado com sucesso!")
-            setCadastro({
-                nome: "",
-                email: "",
-                telefone: 0,
-                endereco: "",
-                tipo_usuario: "",
-                idade: 0,
-                genero: "",
-                cpf: 0
-            });
-
+            alert("Cadastrado com sucesso!")
             navigate.push("/cadastrocarro")
          }
     }catch (error){
@@ -64,7 +54,7 @@ export default function Cadastro() {
     return (
 <div>
     <div className="flex items-center justify-center h-screen bg-[#5A85C6] text-black p-4">
-        <form className="bg-[#7EA4DE] p-6 rounded shadow-md w-full max-w-4xl">
+        <form onSubmit={handleSubmit} className="bg-[#7EA4DE] p-6 rounded shadow-md w-full max-w-4xl">
             <h2 className="text-center mb-4 text-3xl">CADASTRO</h2>
             <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -100,9 +90,11 @@ export default function Cadastro() {
                     <input type="text" name="cpf" id="idCpf" value={cadastro.cpf} onChange={handleChange} className="border p-2 w-full" placeholder="Digite o seu CPF" required />
                 </div>
             </div>
+            <Link href={"/cadastrocarro"}>
             <div className="mt-6 text-center ">
                 <button type="submit" className="bg-[#1D57AE] text-white p-2 rounded hover:bg-blue-600 w-60 p-4">CADASTRAR</button>
             </div>
+            </Link>
         </form>
     </div>
 </div>
